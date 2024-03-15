@@ -5,11 +5,16 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from pathlib import Path
 import base64
+import json
 
 
-client = Anthropic()
+with open("config.json") as config_file:
+    config = json.load(config_file)
+    api_key = config["api_key"]
+
+client = Anthropic(api_key)
 image_path = "/Users/micahbragg/Desktop/cs shit/spark-2024/Helloworld.png"
-with Image.oepn(image_path) as image: 
+with Image.open(image_path) as image: 
     buffered = BytesIO()
     image.save(buffered, format="PNG")
     encoded_string = base64.b64encode(buffered.getvalue()).decode()
