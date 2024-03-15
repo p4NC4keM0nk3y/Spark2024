@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convert Notes to Pdf</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles for extra-extra-large buttons */
+        .btn-xl {
+            padding: 15rem 12rem; /* Significantly larger padding for much taller buttons */
+            font-size: 2rem; /* Larger font size to match the button's physical size */
+            border-radius: 0.75rem; /* Slightly larger border-radius */
+        }
+        /* Reduce space above the button row */
+        .button-row {
+            margin-top: -5rem; /* Pulls the entire row of buttons up */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid p-0">
+        <div class="bg-primary text-white text-center p-5">
+            <h1>Convert Notes to Pdf</h1>
+        </div>
+        <div class="row no-gutters min-vh-100 button-row">
+            <div class="col-12 col-md-6 d-flex p-2">
+                <a href="/" class="btn btn-secondary btn-xl m-auto w-75">Home</a>
+            </div>
+            <div class="col-12 col-md-6 d-flex p-2">
+                <a href="/pdfify" class="btn btn-secondary btn-xl m-auto w-75">Convert Notes to Pdf</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

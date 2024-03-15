@@ -1,0 +1,48 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.banner {
+    width: 100%;
+    height: 150px; /* You can adjust this height as needed */
+    background-color: #007bff; /* Example background color */
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 150px); /* Adjust based on the banner height */
+    padding: 20px; /* Adds some space inside the container */
+}
+
+.button-class {
+    flex-grow: 1; /* Allows the buttons to grow and fill the container */
+    margin: 10px; /* Adjusts spacing between buttons */
+    padding: 20px; /* Increases the button's size */
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 24px; /* Increases the text size */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Makes the button fill the container vertically */
+}
+
+/* Ensures buttons don't stretch too much on larger screens */
+@media (min-width: 768px) {
+    .button-class {
+        max-width: 60%; /* Each button can take up to half of the container's width */
+    }
+}
+
