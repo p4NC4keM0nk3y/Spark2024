@@ -45,4 +45,38 @@ def generate_pdf():
             }
         ]
         
-        resp
+        response = client.messages.create(
+            model=MODEL_NAME,
+            max_tokens=2048,
+            messages=message_list
+        )
+        
+        extracted_text = response.content[0].text
+        
+        pdf_path = "/Users/micahbragg/Desktop/cs shit/spark-2024/TestPDF.pdf"
+        
+        c = canvas.Canvas(pdf_path, pagesize=letter)
+        
+        styles = getSampleStyleSheet()
+        normal_style = styles['Normal']
+        normal_style.fontSize = 12
+        normal_style.leading = 14
+        
+        paragraph = Paragraph(extracted_text, normal_style)
+        paragraph.wrapOn(c, 6.5*inch, 9*inch)  # Adjust the width and height as needed
+        paragraph.drawOn(c, 1*inch, 8*inch)  # Adjust the position as needed
+        
+        c.showPage()
+        c.save()
+        
+        return send_file(pdf_path, as_attachment=True)
+    
+    return '''
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image">
+            <input type="submit" value="Generate PDF">
+        </form>
+    '''
+
+if __name__ == '__main__':
+    app.run()
