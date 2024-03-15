@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webcam Image to PDF</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <h1>Webcam Image to PDF</h1>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button id="capture">Capture Image</button>
+    <form id="imageForm" method="post" enctype="multipart/form-data">
+        <input type="hidden" id="imageData" name="image">
+        <input type="submit" value="Generate PDF">
+    </form>
+
+    <script>
+        const video = document.getElementById('video');
+        const captureButton = document.getElementById('capture');
+        const imageForm = document.getElementById('imageForm');
+        const imageData = document.getElementById('imageData');
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => {
+                video.srcObject = stream;
+            })
+            .catch(error => {
+                console.error('Error accessing webcam:', error);
+            });
+
+        captureButton.addEventListener('click', () => {
+            html2canvas(video).then(canvas => {
+                const dataURL = canvas.toDataURL('image/jpeg');
+                imageData.value = dataURL;
+                imageForm.submit();
+            });
+        });
+    </script>
+</body>
+</html>
